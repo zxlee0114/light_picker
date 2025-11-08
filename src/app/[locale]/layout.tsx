@@ -1,11 +1,13 @@
+import "./globals.css";
+import type { JSX, ReactNode } from "react";
+
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
-import { type ReactNode } from "react";
-import { hasLocale, NextIntlClientProvider } from "next-intl";
-import { routing } from "@/i18n/routing";
 import { notFound } from "next/navigation";
+import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
+
+import { routing } from "@/i18n/routing";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,11 +29,16 @@ type Prop = Readonly<{
   params: Promise<{ locale: string }>;
 }>;
 
-export function generateStaticParams() {
-  return routing.locales.map((locale) => ({ locale }));
+export function generateStaticParams(): {
+  locale: "en" | "zh-TW";
+}[] {
+  return routing.locales.map(locale => ({ locale }));
 }
 
-export default async function RootLayout({ children, params }: Prop) {
+export default async function RootLayout({
+  children,
+  params,
+}: Prop): Promise<JSX.Element> {
   const { locale } = await params;
 
   if (!hasLocale(routing.locales, locale)) notFound();
