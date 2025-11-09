@@ -1,4 +1,9 @@
 {
+  "metadata": {
+    "title": "Light Picker ✨",
+    "description": "A secondhand photography marketplace for camera lovers"
+  },
+
   "home": {
     "header": "Welcome"
   }

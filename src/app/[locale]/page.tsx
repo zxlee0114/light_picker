@@ -13,5 +13,15 @@ export default function Home({
 
   const t = useTranslations("home");
 
-  return <h1>{t("header")}</h1>;
+  return (
+    <div className="flex-center flex-col bg-danger">
+      <button className="form-link">{t("header")}</button>
+      <input type="checkbox" name="" id="" />
+      <ol>
+        <li>fff</li>
+        <li>ffff</li>
+        <li>f</li>
+      </ol>
+    </div>
+  );
 }
