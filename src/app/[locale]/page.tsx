@@ -14,7 +14,7 @@ export default function Home({
   const t = useTranslations("home");
 
   return (
-    <div className="flex-center flex-col bg-danger">
+    <div className="flex-center flex-col bg-danger dark:bg-primary-100">
       <button className="form-link">{t("header")}</button>
       <input type="checkbox" name="" id="" />
       <ol>
