@@ -41,8 +41,13 @@
 
   "files.exclude": {
     "**/.next": true,
-    // "**/node_modules": true,
-    // "next-env.d.ts": true,
-    ".prettierignore": true
+    "**/node_modules": true,
+    "next-env.d.ts": true,
+    ".prettierrc": true,
+    ".prettierignore": true,
+    "pnpm-*": true,
+    "eslint-next.d.ts": true,
+    "tailwind.config.ts": true,
+    "postcss.config.mjs": true
   }
 }
