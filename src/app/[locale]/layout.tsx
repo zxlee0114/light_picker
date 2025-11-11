@@ -7,6 +7,8 @@ import { notFound } from "next/navigation";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getMessages, setRequestLocale } from "next-intl/server";
 
+import Footer from "@/components/navigation/footer";
+import Navbar from "@/components/navigation/navbar";
 import ThemeProvider from "@/context/themes";
 import { routing } from "@/i18n/routing";
 import type { RouteParams, RouteParamsWithChildren } from "@/types/global";
@@ -60,7 +62,11 @@ export default async function RootLayout({
         className={`${notoSans.variable} ${notoSerif.variable} antialiased`}
       >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <NextIntlClientProvider>{children}</NextIntlClientProvider>
+          <NextIntlClientProvider>
+            <Navbar />
+            {children}
+            <Footer />
+          </NextIntlClientProvider>
         </ThemeProvider>
       </body>
     </html>

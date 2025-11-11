@@ -3,8 +3,6 @@ import { type JSX, use } from "react";
 import { useTranslations } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
 
-import Navbar from "@/components/navigation/navbar";
-
 export default function Home({
   params,
 }: {
@@ -17,7 +15,6 @@ export default function Home({
 
   return (
     <main>
-      <Navbar />
       <div className="bg-primary-200">
         <h1>{t("header")}</h1>
       </div>
