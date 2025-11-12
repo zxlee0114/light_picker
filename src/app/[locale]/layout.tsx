@@ -58,6 +58,14 @@ export default async function RootLayout({
 
   return (
     <html lang={locale} suppressHydrationWarning>
+      <head>
+        <link
+          rel="preload"
+          href="/icons/sprite.svg"
+          as="image"
+          type="image/svg+xml"
+        />
+      </head>
       <body
         className={`${notoSans.variable} ${notoSerif.variable} antialiased`}
       >
