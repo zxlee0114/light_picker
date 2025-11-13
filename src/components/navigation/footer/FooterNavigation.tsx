@@ -11,8 +11,8 @@ const FooterNavigation = () => {
   return (
     <>
       {sections.map(section => (
-        <div key={section.title} className="w-[196px]">
-          <h4 className="text-l-bold mb-2 py-1 px-2 text-gray-500">
+        <div key={section.title}>
+          <h4 className="text-l-bold mb-2 py-1 sm:px-2 px-1 text-gray-500">
             {section.title}
           </h4>
           <ul className="flex flex-col gap-2">

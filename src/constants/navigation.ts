@@ -54,7 +54,7 @@ export const FOOTER_NAVIGATION = {
   ],
   en: [
     {
-      title: 'About "Light Picker"',
+      title: "About Us",
       items: [
         { destination: "FAQ", link: FAQ },
         { destination: "Contact", link: CONTACT },

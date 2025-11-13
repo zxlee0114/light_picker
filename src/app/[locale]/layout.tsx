@@ -35,7 +35,7 @@ export const generateMetadata = async ({
   const t = messages.metadata;
 
   return {
-    title: t.title,
+    title: `${t.title} ✨`,
     description: t.description,
   };
 };
@@ -56,12 +56,14 @@ export default async function RootLayout({
 
   setRequestLocale(locale);
 
+  const messages = await getMessages();
+
   return (
     <html lang={locale} suppressHydrationWarning>
       <head>
         <link
           rel="preload"
-          href="/icons/sprite.svg"
+          href="/icons/sprites.svg"
           as="image"
           type="image/svg+xml"
         />
@@ -70,7 +72,7 @@ export default async function RootLayout({
         className={`${notoSans.variable} ${notoSerif.variable} antialiased`}
       >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <NextIntlClientProvider>
+          <NextIntlClientProvider locale={locale} messages={messages}>
             <Navbar />
             {children}
             <Footer />
