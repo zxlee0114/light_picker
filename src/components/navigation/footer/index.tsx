@@ -14,7 +14,7 @@ const Footer = () => {
       <Wrapper className="flex flex-col gap-10 pt-15 pb-20">
         <nav className="min-[70rem]:flex-between min-[70rem]:flex-row min-[70rem]:items-start flex-center flex-col gap-8">
           <section className="flex flex-col gap-8">
-            <Logo />
+            <Logo className="w-40 h-11.5" />
             <SocialLinks />
           </section>
           <section className="grid min-[54.75rem]:grid-cols-[repeat(4,12.25rem)] grid-cols-2 gap-6 max-sm:gap-y-7 min-[70rem]:text-start text-center">

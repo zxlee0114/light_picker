@@ -69,9 +69,6 @@
   img {
     @apply block max-w-full h-auto;
   }
-  svg {
-    @apply fill-current;
-  }
   input {
     @apply accent-primary-600 caret-primary-800;
   }

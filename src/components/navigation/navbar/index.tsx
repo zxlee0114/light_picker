@@ -1,27 +1,55 @@
+import { useLocale, useTranslations } from "next-intl";
+
+import Icon from "@/components/Icon";
+import { Wrapper } from "@/components/Wrapper";
+import { HEADER_NAVIGATION } from "@/constants/navigation";
+import { Link } from "@/i18n/navigation";
+
 import { ThemeToggle } from "./ThemeToggle";
+import Logo from "../Logo";
+import LocaleSwitcher from "./LocaleSwitcher";
+
+type Locale = keyof typeof HEADER_NAVIGATION;
 
 const Navbar = () => {
+  const locale = useLocale() as Locale;
+  const navList = HEADER_NAVIGATION[locale];
+  const t = useTranslations("auth");
+
   return (
-    <header className="@container/nav">
-      <div className="flex-between gap-7 @md/nav:max-w-7xl mx-auto py-5">
+    <header>
+      <Wrapper className="flex-between gap-7 py-5">
         <section>
-          <h1>拾光堂</h1>
+          <Logo className="w-35 h-10" />
         </section>
         <nav className="flex-1">
           <div className="flex-between">
             <ul className="flex gap-5">
-              <li>相機</li>
-              <li>機身</li>
-              <li>鏡頭</li>
-              <li>配件</li>
-              <li>收購流程</li>
-              <li>其他</li>
+              {navList.map(item => (
+                <li key={item.title}>
+                  <Link href={item.link} className="link text-l-bold py-2 px-3">
+                    {item.title}
+                  </Link>
+                </li>
+              ))}
             </ul>
-            <ThemeToggle />
+            <div className="flex-center gap-3">
+              <div className="p-3">
+                <Icon name="search" className="size-6 link" />
+              </div>
+              <div className="p-3">
+                <Icon name="favorite" className="size-6 link" />
+              </div>
+              <div className="p-3">
+                <Icon name="cart" className="size-6 link" />
+              </div>
+              <ThemeToggle />
+              <LocaleSwitcher />
+            </div>
           </div>
         </nav>
-        <button className="btn btn-medium">註冊／登入</button>
-      </div>
+        <button className="btn btn-medium">{t("login")}</button>
+      </Wrapper>
     </header>
   );
 };

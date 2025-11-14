@@ -2,6 +2,28 @@ import { ROUTES } from "./routes";
 
 const { FAQ, CONTACT, PRODUCTS, SELL, ACCOUNT, ORDERS } = ROUTES;
 
+type Locales = "zh-TW" | "en";
+
+type HeaderSection = {
+  title: string;
+  link: string;
+};
+
+type HeaderNavigation = Record<Locales, readonly HeaderSection[]>;
+
+export const HEADER_NAVIGATION = {
+  "zh-TW": [
+    { title: "相機", link: `${PRODUCTS.CATALOGUE}?query=camera` },
+    { title: "鏡頭", link: `${PRODUCTS.CATALOGUE}?query=lens` },
+    { title: "腳架", link: `${PRODUCTS.CATALOGUE}?query=tripod` },
+  ],
+  en: [
+    { title: "Camera", link: `${PRODUCTS.CATALOGUE}?query=camera` },
+    { title: "Lens", link: `${PRODUCTS.CATALOGUE}?query=lens` },
+    { title: "Tripod", link: `${PRODUCTS.CATALOGUE}?query=tripod` },
+  ],
+} as const satisfies HeaderNavigation;
+
 type FooterLinkItem = {
   destination: string;
   link: string;
@@ -12,7 +34,7 @@ type FooterSection = {
   items: readonly FooterLinkItem[];
 };
 
-type FooterNavigation = Record<string, readonly FooterSection[]>;
+type FooterNavigation = Record<Locales, readonly FooterSection[]>;
 
 export const FOOTER_NAVIGATION = {
   "zh-TW": [

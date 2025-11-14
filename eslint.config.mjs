@@ -123,7 +123,7 @@ export default defineConfig([
       // Temporarily disable tailwindcss rules to avoid tailwind-api-utils resolution
       // errors inside the plugin worker (pnpm/synckit resolution issue).
       // Re-enable when eslint-plugin-tailwindcss compatibility is confirmed.
-      "tailwindcss/classnames-order": "off",
+      // "tailwindcss/classnames-order": "off",
       "tailwindcss/no-custom-classname": "off",
 
       // --- Prettier plugin: 自動格式化 ---

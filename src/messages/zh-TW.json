@@ -4,6 +4,12 @@
     "description": "專為攝影愛好者打造的二手攝影器材交易平台"
   },
 
+  "auth": {
+    "login": "登入",
+    "logout": "登出",
+    "register": "註冊"
+  },
+
   "home": {
     "header": "歡迎"
   }
