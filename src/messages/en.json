@@ -1,7 +1,13 @@
 {
   "metadata": {
-    "title": "Light Picker ✨",
+    "title": "Light Picker",
     "description": "A secondhand photography marketplace for camera lovers"
+  },
+
+  "auth": {
+    "login": "Login",
+    "logout": "Logout",
+    "register": "Sign up"
   },
 
   "home": {

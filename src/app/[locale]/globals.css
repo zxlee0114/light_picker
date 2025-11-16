@@ -26,12 +26,16 @@
   --color-gray-600: #333333;
   --color-gray-1000: #212121;
 
-  --color-background-light: #e2e2e2;
+  --color-background-1: #e2e2e2;
 
   --font-noto-sans: var(--font-noto-sans);
   --font-noto-serif: var(--font-noto-serif);
+
+  --background-image-logo-light: url("/images/logo-light.svg");
+  --background-image-logo-dark: url("/images/logo-dark.svg");
 }
 
+/* Dark-mode style */
 @layer theme {
   .dark {
     --color-primary-100: #1b2426;
@@ -54,13 +58,13 @@
     --color-gray-600: #d1d1d1;
     --color-gray-1000: #f5f5f5;
 
-    --color-background-light: #121212;
+    --color-background-1: #121212;
   }
 }
 
 @layer base {
   body {
-    @apply text-primary-1000 font-noto-sans leading-normal text-base;
+    @apply text-primary-1000 bg-background-1 font-noto-sans leading-normal text-base transition-colors duration-300 ease-in-out;
   }
   img {
     @apply block max-w-full h-auto;
@@ -70,6 +74,27 @@
   }
   textarea {
     @apply resize-none;
+  }
+
+  /* Theme transition: animate commonly-changing properties for smooth theme switch */
+  html,
+  body,
+  #__next,
+  .dark {
+    transition-property: background-color, color, border-color, box-shadow;
+    transition-duration: 300ms;
+    transition-timing-function: ease-in-out;
+  }
+
+  /* Respect user preference for reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    html,
+    body,
+    #__next,
+    .dark {
+      transition: none !important;
+      animation: none !important;
+    }
   }
 }
 
@@ -157,6 +182,7 @@
   @apply flex justify-start items-center;
 }
 
+/* * 🚿 shadcn style ↓↓ */
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);

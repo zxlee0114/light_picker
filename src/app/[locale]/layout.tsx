@@ -7,6 +7,8 @@ import { notFound } from "next/navigation";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getMessages, setRequestLocale } from "next-intl/server";
 
+import Footer from "@/components/navigation/footer";
+import Navbar from "@/components/navigation/navbar";
 import ThemeProvider from "@/context/themes";
 import { routing } from "@/i18n/routing";
 import type { RouteParams, RouteParamsWithChildren } from "@/types/global";
@@ -33,7 +35,7 @@ export const generateMetadata = async ({
   const t = messages.metadata;
 
   return {
-    title: t.title,
+    title: `${t.title} ✨`,
     description: t.description,
   };
 };
@@ -54,18 +56,27 @@ export default async function RootLayout({
 
   setRequestLocale(locale);
 
+  const messages = await getMessages();
+
   return (
     <html lang={locale} suppressHydrationWarning>
+      <head>
+        <link
+          rel="preload"
+          href="/icons/sprites.svg"
+          as="image"
+          type="image/svg+xml"
+        />
+      </head>
       <body
         className={`${notoSans.variable} ${notoSerif.variable} antialiased`}
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <NextIntlClientProvider>{children}</NextIntlClientProvider>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <NextIntlClientProvider locale={locale} messages={messages}>
+            <Navbar />
+            {children}
+            <Footer />
+          </NextIntlClientProvider>
         </ThemeProvider>
       </body>
     </html>

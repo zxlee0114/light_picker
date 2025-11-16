@@ -51,14 +51,14 @@ export default defineConfig([
     rules: {
       // --- TypeScript 規則 ---
       "@typescript-eslint/no-explicit-any": "warn",
-      "@typescript-eslint/explicit-function-return-type": [
-        "warn",
-        {
-          allowExpressions: true,
-          allowTypedFunctionExpressions: true,
-          allowHigherOrderFunctions: true,
-        },
-      ],
+      // "@typescript-eslint/explicit-function-return-type": [
+      //   "warn",
+      //   {
+      //     allowExpressions: true,
+      //     allowTypedFunctionExpressions: true,
+      //     allowHigherOrderFunctions: true,
+      //   },
+      // ],
       "@typescript-eslint/no-unused-vars": [
         "error",
         {
@@ -120,7 +120,10 @@ export default defineConfig([
       ],
 
       // --- TailwindCSS plugin: class 排序與檢查 ---
-      "tailwindcss/classnames-order": "warn",
+      // Temporarily disable tailwindcss rules to avoid tailwind-api-utils resolution
+      // errors inside the plugin worker (pnpm/synckit resolution issue).
+      // Re-enable when eslint-plugin-tailwindcss compatibility is confirmed.
+      // "tailwindcss/classnames-order": "off",
       "tailwindcss/no-custom-classname": "off",
 
       // --- Prettier plugin: 自動格式化 ---
