@@ -8,6 +8,9 @@ export const auth = betterAuth({
   database: drizzleAdapter(db, {
     provider: "pg",
   }),
+  // rateLimit: {
+  //   storage: "database",
+  // },
   session: {
     cookieCache: {
       enabled: true,
