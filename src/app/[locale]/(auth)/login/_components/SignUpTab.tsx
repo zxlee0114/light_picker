@@ -43,7 +43,7 @@ const SignUpTab = () => {
   const { isSubmitting } = form.formState;
 
   const handleSignUp = async (data: SignUpForm) => {
-    const response = await authClient.signUp.email(
+    await authClient.signUp.email(
       {
         ...data,
         callbackURL: ROUTES.HOME, // triggered when email verification is on
@@ -58,8 +58,6 @@ const SignUpTab = () => {
         },
       },
     );
-    // eslint-disable-next-line no-console
-    console.log(response);
   };
 
   return (

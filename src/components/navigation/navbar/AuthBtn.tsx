@@ -10,8 +10,6 @@ import { authClient } from "@/lib/auth-client";
 const AuthBtn = () => {
   const t = useTranslations("auth");
   const { data: session } = authClient.useSession(); // * client side way to get the session
-  // eslint-disable-next-line no-console
-  console.log(session?.user.name);
 
   const handleSignOut = () => {
     try {
