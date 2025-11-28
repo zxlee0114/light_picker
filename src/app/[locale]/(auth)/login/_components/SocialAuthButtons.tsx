@@ -1,9 +1,7 @@
 "use client";
 
-import { toast } from "sonner";
-
+import BetterAuthActionButton from "@/components/auth/BetterAuthActionButton";
 import Icon from "@/components/Icon";
-import { Button } from "@/components/ui/button";
 import {
   SUPPORTED_OAUTH_PROVIDER_DETAILS,
   SUPPORTED_OAUTH_PROVIDERS,
@@ -15,16 +13,16 @@ const SocialAuthButtons = () => {
   return SUPPORTED_OAUTH_PROVIDERS.map(provider => {
     // TODO handle error and loading state
     return (
-      <Button
+      <BetterAuthActionButton
         variant="outline"
         key={provider}
-        onClick={() => {
-          authClient.signIn.social({ provider, callbackURL: ROUTES.HOME });
-          toast.success("登入成功");
-        }}
+        action={() =>
+          authClient.signIn.social({ provider, callbackURL: ROUTES.HOME })
+        }
       >
         <Icon name={SUPPORTED_OAUTH_PROVIDER_DETAILS[provider].icon} />
-      </Button>
+        {SUPPORTED_OAUTH_PROVIDER_DETAILS[provider].name}
+      </BetterAuthActionButton>
     );
   });
 };

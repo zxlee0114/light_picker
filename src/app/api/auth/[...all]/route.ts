@@ -13,6 +13,8 @@ import { toNextJsHandler } from "better-auth/next-js";
 import { env } from "@/config/env";
 import { auth } from "@/lib/auth";
 
+// ? === Arcjet Setting starts ===
+
 const aj = arcjet({
   key: env.ARCJET_KEY,
   characteristics: ["userIdOrIp"],
@@ -23,26 +25,31 @@ const botSettings = {
   mode: "LIVE",
   allow: ["STRIPE_WEBHOOK"],
 } satisfies BotOptions;
+
 const restrictiveRateLimitSettings = {
   mode: "LIVE",
   max: 10,
   interval: "10m",
 } satisfies SlidingWindowRateLimitOptions<[]>;
+
 const laxRateLimitSettings = {
   mode: "LIVE",
   max: 60,
   interval: "1m",
 } satisfies SlidingWindowRateLimitOptions<[]>;
+
 const emailSettings = {
   mode: "LIVE",
   deny: ["DISPOSABLE", "INVALID", "NO_MX_RECORDS"],
 } satisfies EmailOptions;
 
+// ? === Arcjet Setting ends ===
+
 const authHandler = toNextJsHandler(auth);
 export const { GET } = authHandler;
 
 export async function POST(request: Request) {
-  const clonedRequest = request.clone();
+  const clonedRequest = request.clone(); // since a request can't be read by Arcjet and by BetterAuth at same time
   const decision = await checkByArcjet(request);
 
   if (decision.isDenied()) {
@@ -56,9 +63,9 @@ export async function POST(request: Request) {
       } else if (decision.reason.emailTypes.includes("DISPOSABLE")) {
         message = "無法使用一次性電子郵件註冊";
       } else if (decision.reason.emailTypes.includes("NO_MX_RECORDS")) {
-        message = "此電子郵件網域無效";
+        message = "此電子郵件的網域無效，請使用別的 Email 註冊";
       } else {
-        message = "請使用別的 Email 註冊";
+        message = "此 Email 無效，請使用別的 Email 註冊";
       }
 
       return Response.json({ message }, { status: 400 });
@@ -83,6 +90,7 @@ async function checkByArcjet(request: Request) {
       "email" in body &&
       typeof body.email === "string"
     ) {
+      // Sign up with email
       return aj
         .withRule(
           protectSignup({
@@ -93,12 +101,15 @@ async function checkByArcjet(request: Request) {
         )
         .protect(request, { email: body.email, userIdOrIp });
     } else {
+      // Sign up with o-auth
       return aj
         .withRule(detectBot(botSettings))
         .withRule(slidingWindow(restrictiveRateLimitSettings))
         .protect(request, { userIdOrIp });
     }
   }
+
+  // Generic Return
   return aj
     .withRule(detectBot(botSettings))
     .withRule(slidingWindow(laxRateLimitSettings))
