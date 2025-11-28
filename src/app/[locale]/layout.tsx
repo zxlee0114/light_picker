@@ -9,6 +9,7 @@ import { getMessages, setRequestLocale } from "next-intl/server";
 
 import Footer from "@/components/navigation/footer";
 import Navbar from "@/components/navigation/navbar";
+import { Toaster } from "@/components/ui/sonner";
 import ThemeProvider from "@/context/themes";
 import { routing } from "@/i18n/routing";
 import type { RouteParams, RouteParamsWithChildren } from "@/types/global";
@@ -76,6 +77,7 @@ export default async function RootLayout({
             <Navbar />
             {children}
             <Footer />
+            <Toaster position="top-center" />
           </NextIntlClientProvider>
         </ThemeProvider>
       </body>

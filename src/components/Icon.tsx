@@ -1,8 +1,6 @@
-// components/Icon.tsx
-
 import { type FC, type SVGProps } from "react";
 
-type SvgIconId =
+export type SvgIconId =
   | "arrow-down"
   | "chevron-left"
   | "chevron-right"
@@ -18,7 +16,9 @@ type SvgIconId =
   | "filter"
   | "instagram"
   | "facebook"
-  | "line";
+  | "line"
+  | "facebook-oauth"
+  | "google-oauth";
 
 interface IconProps extends SVGProps<SVGSVGElement> {
   name: SvgIconId; // The ID of the symbol in the sprite

@@ -1,4 +1,4 @@
-import { useLocale, useTranslations } from "next-intl";
+import { useLocale } from "next-intl";
 
 import Icon from "@/components/Icon";
 import { Wrapper } from "@/components/Wrapper";
@@ -7,6 +7,7 @@ import { Link } from "@/i18n/navigation";
 
 import { ThemeToggle } from "./ThemeToggle";
 import Logo from "../Logo";
+import AuthBtn from "./AuthBtn";
 import LocaleSwitcher from "./LocaleSwitcher";
 
 type Locale = keyof typeof HEADER_NAVIGATION;
@@ -14,7 +15,6 @@ type Locale = keyof typeof HEADER_NAVIGATION;
 const Navbar = () => {
   const locale = useLocale() as Locale;
   const navList = HEADER_NAVIGATION[locale];
-  const t = useTranslations("auth");
 
   return (
     <header>
@@ -48,7 +48,8 @@ const Navbar = () => {
             </div>
           </div>
         </nav>
-        <button className="btn btn-medium">{t("login")}</button>
+
+        <AuthBtn />
       </Wrapper>
     </header>
   );
