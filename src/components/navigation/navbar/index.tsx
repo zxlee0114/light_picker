@@ -1,21 +1,12 @@
-import { useLocale } from "next-intl";
-
-import Icon from "@/components/Icon";
 import { Wrapper } from "@/components/Wrapper";
-import { HEADER_NAVIGATION } from "@/constants/navigation";
-import { Link } from "@/i18n/navigation";
 
-import { ThemeToggle } from "./ThemeToggle";
 import Logo from "../Logo";
 import AuthBtn from "./AuthBtn";
-import LocaleSwitcher from "./LocaleSwitcher";
-
-type Locale = keyof typeof HEADER_NAVIGATION;
+import HeaderButtonGroup from "./HeaderButtonGroup";
+import HeaderMenu from "../HeaderMenu";
+import MobileSideNavbar from "../sidebar/MobileNavbar";
 
 const Navbar = () => {
-  const locale = useLocale() as Locale;
-  const navList = HEADER_NAVIGATION[locale];
-
   return (
     <header>
       <Wrapper className="flex-between gap-7 py-5">
@@ -24,32 +15,14 @@ const Navbar = () => {
         </section>
         <nav className="flex-1">
           <div className="flex-between">
-            <ul className="flex gap-5">
-              {navList.map(item => (
-                <li key={item.title}>
-                  <Link href={item.link} className="link text-l-bold py-2 px-3">
-                    {item.title}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-            <div className="flex-center gap-3">
-              <div className="p-3">
-                <Icon name="search" className="size-6 link" />
-              </div>
-              <div className="p-3">
-                <Icon name="favorite" className="size-6 link" />
-              </div>
-              <div className="p-3">
-                <Icon name="cart" className="size-6 link" />
-              </div>
-              <ThemeToggle />
-              <LocaleSwitcher />
-            </div>
+            <HeaderMenu />
+            <HeaderButtonGroup />
           </div>
         </nav>
-
-        <AuthBtn />
+        <div className="flex-center">
+          <AuthBtn />
+          <MobileSideNavbar />
+        </div>
       </Wrapper>
     </header>
   );

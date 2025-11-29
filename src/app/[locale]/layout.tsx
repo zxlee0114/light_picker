@@ -36,7 +36,10 @@ export const generateMetadata = async ({
   const t = messages.metadata;
 
   return {
-    title: `${t.title} ✨`,
+    title: {
+      template: `%s | ${t.title} ✨`,
+      default: `${t.title} ✨`,
+    },
     description: t.description,
   };
 };
