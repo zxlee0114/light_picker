@@ -1,6 +1,14 @@
-import { useEffect, type FC, type ReactNode } from "react";
+import {
+  type RefObject,
+  type FC,
+  type ReactNode,
+  useEffect,
+  useRef,
+} from "react";
 
 import Icon from "@/components/Icon";
+import useFocusTrap from "@/hooks/useFocusTrap";
+import useOutsideClick from "@/hooks/useOutsideClick";
 import useScrollLock from "@/hooks/useScrollLock";
 import { cn } from "@/lib/utils";
 
@@ -14,6 +22,11 @@ type Props = {
 
 const MobileMenu: FC<Props> = props => {
   const { isOpen, onClose } = props;
+  const sidebarRef = useRef<HTMLElement>(null);
+
+  useScrollLock(isOpen);
+  useOutsideClick(sidebarRef, onClose);
+  useFocusTrap(sidebarRef, isOpen);
 
   useEffect(() => {
     if (!isOpen) return;
@@ -29,34 +42,44 @@ const MobileMenu: FC<Props> = props => {
     };
   }, [isOpen, onClose]);
 
-  useScrollLock(isOpen);
-
   return (
     <>
-      <SidebarOverlay {...props} />
-      <SidebarWrapper {...props} />
+      <SidebarOverlay isOpen={isOpen} />
+      <SidebarWrapper ref={sidebarRef} {...props} />
     </>
   );
 };
 
-const SidebarWrapper: FC<Props> = ({ isOpen, onClose, children }) => (
-  <aside
-    className={cn(
-      "fixed inset-y-0 end-0 z-50 w-[min(375px,100%)] bg-white transition",
-      isOpen ? "translate-x-0" : "translate-x-full",
-    )}
-  >
-    <header className="flex-between gap-5 py-5 px-2">
-      <Logo />
-      <Icon name="close" onClick={onClose} className="size-12 link" />
-    </header>
-    <nav className="py-2 px-3">{children}</nav>
-  </aside>
-);
+type SidebarProps = {
+  ref: RefObject<HTMLElement | null>;
+} & Props;
 
-const SidebarOverlay: FC<Omit<Props, "children">> = ({ isOpen, onClose }) => (
+const SidebarWrapper: FC<SidebarProps> = ({
+  isOpen,
+  onClose,
+  children,
+  ref,
+}) => {
+  return (
+    <aside
+      ref={ref}
+      inert={!isOpen}
+      className={cn(
+        "fixed inset-y-0 end-0 z-50 w-[min(375px,100%)] bg-white transition",
+        isOpen ? "translate-x-0" : "translate-x-full",
+      )}
+    >
+      <header className="flex-between gap-5 py-5 px-2">
+        <Logo />
+        <Icon name="close" onClick={onClose} className="size-12 link" />
+      </header>
+      <nav className="py-2 px-3">{children}</nav>
+    </aside>
+  );
+};
+
+const SidebarOverlay: FC<Pick<Props, "isOpen">> = ({ isOpen }) => (
   <div
-    onClick={onClose}
     className={cn(
       "fixed inset-0 z-40 bg-black/40 transition-opacity",
       isOpen

@@ -1,34 +1,37 @@
 import Link from "next/link";
 
 import Icon from "@/components/Icon";
+import { SOCIAL_LINKS } from "@/constants/data";
+
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "../ui/tooltip";
 
 const SocialLinks = () => {
   return (
     <nav className="flex gap-1">
-      <Link
-        href={"#"}
-        target="_blank"
-        title="facebook"
-        className="flex-center p-3 link"
-      >
-        <Icon name="facebook" width={24} height={24} />
-      </Link>
-      <Link
-        href={"#"}
-        target="_blank"
-        title="instagram"
-        className="flex-center p-3 link"
-      >
-        <Icon name="instagram" width={24} height={24} />
-      </Link>
-      <Link
-        href={"#"}
-        target="_blank"
-        title="line"
-        className="flex-center p-3 link"
-      >
-        <Icon name="line" width={24} height={24} />
-      </Link>
+      <TooltipProvider>
+        {SOCIAL_LINKS.map(item => {
+          const { title, link, icon } = item;
+          return (
+            <Tooltip key={title}>
+              <TooltipTrigger asChild>
+                <Link
+                  href={link}
+                  target="_blank"
+                  className="flex-center p-3 link"
+                >
+                  <Icon name={icon} className="size-6" />
+                </Link>
+              </TooltipTrigger>
+              <TooltipContent>{title}</TooltipContent>
+            </Tooltip>
+          );
+        })}
+      </TooltipProvider>
     </nav>
   );
 };

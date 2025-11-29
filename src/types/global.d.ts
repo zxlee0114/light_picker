@@ -1,5 +1,7 @@
 import type { ReactNode } from "react";
 
+export type Locales = "zh-TW" | "en";
+
 type ParamsKeys = "locale" | "id";
 
 interface RouteParams {

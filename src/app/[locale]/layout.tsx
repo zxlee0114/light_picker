@@ -66,7 +66,7 @@ export default async function RootLayout({
     <html lang={locale} suppressHydrationWarning>
       <head>
         <link
-          rel="preload"
+          rel="prefetch"
           href="/icons/sprites.svg"
           as="image"
           type="image/svg+xml"
