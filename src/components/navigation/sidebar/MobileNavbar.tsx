@@ -2,10 +2,10 @@
 
 import { useState } from "react";
 
+import { Drawer, DrawerHeader } from "@/components/Drawer";
 import Icon from "@/components/Icon";
 import { Separator } from "@/components/ui/separator";
 
-import MobileMenu from "./MobileMenu";
 import HeaderMenu from "../HeaderMenu";
 import SocialLinks from "../SocialLinks";
 
@@ -19,10 +19,11 @@ const MobileSideNavbar = () => {
       >
         <Icon name="menu" className="size-7 link" />
       </button>
-      <MobileMenu
-        isOpen={isSidebarOpen}
-        onClose={() => setIsSidebarOpen(false)}
-      >
+      <Drawer isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)}>
+        <DrawerHeader
+          replaceLogo={false}
+          onClose={() => setIsSidebarOpen(false)}
+        />
         <nav className="flex flex-col gap-5">
           <h2>TODO: SearchBar</h2>
           <Separator />
@@ -32,7 +33,7 @@ const MobileSideNavbar = () => {
           <Separator />
           <SocialLinks />
         </nav>
-      </MobileMenu>
+      </Drawer>
     </>
   );
 };
