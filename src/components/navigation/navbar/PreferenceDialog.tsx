@@ -21,6 +21,8 @@ type PreferenceDialogProps = {
  * 測試用的偏好設定對話框
  * 使用自訂 Modal 元件，在語言切換時跳過開啟動畫
  */
+
+// TODO: 切換外觀主題的閃爍問題
 const PreferenceDialog = ({ open, onOpenChange }: PreferenceDialogProps) => {
   const currentLocale = useLocale();
   const t = useTranslations("preferenceDialog");
@@ -50,7 +52,9 @@ const PreferenceDialog = ({ open, onOpenChange }: PreferenceDialogProps) => {
           try {
             localStorage.removeItem("test-preference-skip-animation");
           } catch {
-            // ignore
+            console.error(
+              "Some error happened when removing localStorage item",
+            );
           }
         }
       });
