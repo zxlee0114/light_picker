@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useTransition } from "react";
 
 import { Check, Globe, Moon, Sun } from "lucide-react";
 import { useLocale } from "next-intl";
@@ -99,11 +99,14 @@ const locales = [
 const LanguageSwitch = ({ locale }: LanguageSwitchProps) => {
   const pathname = usePathname();
   const router = useRouter();
+  const [isPending, startTransition] = useTransition();
 
   const handleLocaleChange = (code: Locales) => {
-    // 只改變語言和路由，不改變 dialog 的 open 狀態
-    // 直接使用 pathname（不帶 query），讓 dialog 保持當前開啟狀態
-    router.replace(pathname, { locale: code });
+    // 使用 startTransition 包裝路由變化，讓語言切換在背景進行
+    // 這樣 Dialog 不會觸發重新掛載，而是保持當前開啟狀態
+    startTransition(() => {
+      router.replace(pathname, { locale: code });
+    });
   };
 
   return (
@@ -119,10 +122,11 @@ const LanguageSwitch = ({ locale }: LanguageSwitchProps) => {
             <button
               key={l.code}
               onClick={() => handleLocaleChange(l.code)}
-              disabled={inUse}
+              disabled={inUse || isPending}
               className={cn(
                 "flex-between w-full p-1 px-2 rounded-sm h6-regular hover:bg-gray-100 transition-colors",
                 inUse && "bg-gray-100 font-bold cursor-default",
+                isPending && "opacity-50 cursor-wait",
               )}
             >
               <span className="flex-center">{l.label}</span>
