@@ -57,7 +57,6 @@ export default async function RootLayout({
   const { locale } = await params;
 
   if (!hasLocale(routing.locales, locale)) notFound();
-
   setRequestLocale(locale);
 
   const messages = await getMessages();

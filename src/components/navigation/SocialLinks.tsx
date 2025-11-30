@@ -22,6 +22,7 @@ const SocialLinks = () => {
                 <Link
                   href={link}
                   target="_blank"
+                  rel="noopener noreferrer"
                   className="flex-center p-3 link"
                 >
                   <Icon name={icon} className="size-6" />

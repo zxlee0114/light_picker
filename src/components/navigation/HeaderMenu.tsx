@@ -3,7 +3,7 @@ import { useLocale } from "next-intl";
 import { HEADER_NAVIGATION } from "@/constants/navigation";
 import { cn } from "@/lib/utils";
 
-import SpreadingBottomLink from "../ui/SpreadingBottomLink";
+import SpreadingBottomLink from "../SpreadingBottomLink";
 
 type Locale = keyof typeof HEADER_NAVIGATION;
 type Props = {
