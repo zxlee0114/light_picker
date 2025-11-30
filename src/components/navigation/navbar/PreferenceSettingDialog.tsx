@@ -101,10 +101,9 @@ const LanguageSwitch = ({ locale }: LanguageSwitchProps) => {
   const router = useRouter();
 
   const handleLocaleChange = (code: Locales) => {
-    // 保留目前的 query string（例如 ?settings=1），避免切換語言時遺失對話框狀態
-    const search = typeof window !== "undefined" ? window.location.search : "";
-    const target = `${pathname}${search}`;
-    router.replace(target, { locale: code });
+    // 只改變語言和路由，不改變 dialog 的 open 狀態
+    // 直接使用 pathname（不帶 query），讓 dialog 保持當前開啟狀態
+    router.replace(pathname, { locale: code });
   };
 
   return (
