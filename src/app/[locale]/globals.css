@@ -5,6 +5,20 @@
 @plugin "tailwindcss-animate";
 
 @custom-variant dark (&:is(.dark *));
+
+/* CSS Variables for theme-aware colors */
+:root {
+  --button-bg: transparent;
+  --button-active-bg: #f3f4f6;
+  --button-hover-bg: #f9fafb;
+}
+
+.dark {
+  --button-bg: transparent;
+  --button-active-bg: #1f2937;
+  --button-hover-bg: #111827;
+}
+
 @theme {
   --color-primary-100: #edf4f6;
   --color-primary-200: #d8e8e8;
