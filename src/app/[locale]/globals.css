@@ -5,6 +5,20 @@
 @plugin "tailwindcss-animate";
 
 @custom-variant dark (&:is(.dark *));
+
+/* CSS Variables for theme-aware colors */
+:root {
+  --button-bg: transparent;
+  --button-active-bg: #f3f4f6;
+  --button-hover-bg: #f9fafb;
+}
+
+.dark {
+  --button-bg: transparent;
+  --button-active-bg: #1f2937;
+  --button-hover-bg: #111827;
+}
+
 @theme {
   --color-primary-100: #edf4f6;
   --color-primary-200: #d8e8e8;
@@ -13,7 +27,7 @@
   --color-primary-800: #4a6465;
   --color-primary-1000: #313e40;
 
-  --color-success: #b1dfca;
+  --color-success: #68b998;
   --color-danger: #f48282;
   --color-warning: #f5e6a8;
   --color-info: #82b4f4;
@@ -69,9 +83,9 @@
   img {
     @apply block max-w-full h-auto;
   }
-  /* input {
-    @apply accent-primary-600 caret-primary-800;
-  } */
+  button {
+    @apply hover:cursor-pointer;
+  }
   textarea {
     @apply resize-none;
   }

@@ -36,7 +36,10 @@ export const generateMetadata = async ({
   const t = messages.metadata;
 
   return {
-    title: `${t.title} ✨`,
+    title: {
+      template: `%s | ${t.title} ✨`,
+      default: `${t.title} ✨`,
+    },
     description: t.description,
   };
 };
@@ -54,7 +57,6 @@ export default async function RootLayout({
   const { locale } = await params;
 
   if (!hasLocale(routing.locales, locale)) notFound();
-
   setRequestLocale(locale);
 
   const messages = await getMessages();
@@ -63,9 +65,9 @@ export default async function RootLayout({
     <html lang={locale} suppressHydrationWarning>
       <head>
         <link
-          rel="preload"
+          rel="prefetch"
           href="/icons/sprites.svg"
-          as="image"
+          as="fetch"
           type="image/svg+xml"
         />
       </head>

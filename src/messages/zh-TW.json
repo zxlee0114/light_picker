@@ -10,6 +10,15 @@
     "register": "註冊"
   },
 
+  "preferenceDialog": {
+    "title": "偏好設定",
+    "appearanceSetting": "外觀主題",
+    "switchToLight": "切換為淺色模式",
+    "switchToDark": "切換為深色模式",
+    "languageSetting": "語言設定",
+    "confirm": "確定"
+  },
+
   "home": {
     "header": "歡迎"
   }

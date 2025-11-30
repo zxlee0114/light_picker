@@ -4,7 +4,7 @@ import Logo from "@/components/navigation/Logo";
 import { Wrapper } from "@/components/Wrapper";
 
 import FooterNavigation from "./FooterNavigation";
-import SocialLinks from "./SocialLinks";
+import SocialLinks from "../SocialLinks";
 
 const Footer = () => {
   const t = useTranslations("metadata");

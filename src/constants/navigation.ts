@@ -1,8 +1,8 @@
+import type { Locales } from "@/types/global";
+
 import { ROUTES } from "./routes";
 
 const { FAQ, CONTACT, PRODUCTS, SELL, ACCOUNT, ORDERS } = ROUTES;
-
-type Locales = "zh-TW" | "en";
 
 type HeaderSection = {
   title: string;
