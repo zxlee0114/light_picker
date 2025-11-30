@@ -1,8 +1,6 @@
 import Icon from "@/components/Icon";
 
 import CollectionIcon from "./CollectionButton";
-import LocaleSwitcher from "../LocaleSwitcher";
-import { ThemeToggle } from "../ThemeToggle";
 
 const HeaderButtonGroup = () => {
   return (
@@ -16,8 +14,8 @@ const HeaderButtonGroup = () => {
       <div className="p-3">
         <CollectionIcon name="cart" />
       </div>
-      <ThemeToggle />
-      <LocaleSwitcher />
+      {/* <ThemeToggle />
+      <LocaleSwitcher /> */}
     </div>
   );
 };

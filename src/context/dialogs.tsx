@@ -3,7 +3,7 @@
 import type { FC, PropsWithChildren } from "react";
 import { createContext, useContext, useMemo, useState, useEffect } from "react";
 
-import TestPreferenceDialog from "@/components/navigation/navbar/TestPreferenceDialog";
+import PreferenceDialog from "@/components/navigation/navbar/PreferenceDialog";
 
 const SettingsContext = createContext({
   open: false,
@@ -33,7 +33,7 @@ export const SettingsProvider: FC<PropsWithChildren> = ({ children }) => {
         localStorage.removeItem(DIALOG_STATE_KEY);
       }
     } catch {
-      // ignore
+      console.error("Some Error happened in SettingProvider");
     }
   }, [open]);
 
@@ -42,7 +42,7 @@ export const SettingsProvider: FC<PropsWithChildren> = ({ children }) => {
   return (
     <SettingsContext.Provider value={value}>
       {children}
-      <TestPreferenceDialog open={open} onOpenChange={setOpen} />
+      <PreferenceDialog open={open} onOpenChange={setOpen} />
     </SettingsContext.Provider>
   );
 };

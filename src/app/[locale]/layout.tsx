@@ -67,7 +67,7 @@ export default async function RootLayout({
         <link
           rel="prefetch"
           href="/icons/sprites.svg"
-          as="image"
+          as="fetch"
           type="image/svg+xml"
         />
       </head>

@@ -10,6 +10,15 @@
     "register": "Sign up"
   },
 
+  "preferenceDialog": {
+    "title": "Preferences",
+    "appearanceSetting": "Appearance",
+    "switchToLight": "Switch to Light Mode",
+    "switchToDark": "Switch to Dark Mode",
+    "languageSetting": "Language",
+    "confirm": "Confirm"
+  },
+
   "home": {
     "header": "Welcome"
   }
