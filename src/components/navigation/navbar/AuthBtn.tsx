@@ -28,7 +28,7 @@ const AuthBtn = () => {
           {t("logout")}
         </button>
       ) : (
-        <button className="btn btn-medium relative">
+        <button className="btn btn-light btn-medium relative">
           <Link href={ROUTES.LOGIN} className="absolute inset-0" />
           {t("login")}
         </button>

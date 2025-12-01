@@ -21,7 +21,7 @@ type Locale =
 const HomeBanner = () => {
   const locale = useLocale() as Locale;
   return (
-    <section className="bg-white pt-15 pb-25">
+    <section className="bg-gray-0 pt-15 pb-25">
       <Swiper>
         {HOME_BANNER_DATA.map(banner => {
           const { id, class: bgImg, element } = banner;
@@ -38,7 +38,7 @@ const HomeBanner = () => {
                 <div className="flex flex-col gap-15">
                   <h2
                     className={cn(
-                      "flex flex-col gap-1 h1-bold text-[#fff]",
+                      "flex flex-col gap-1 h1-bold text-white",
                       locale === "en" && "text-5xl",
                     )}
                   >
@@ -49,7 +49,7 @@ const HomeBanner = () => {
                     {element.type === "button" ? (
                       <Link
                         href={ROUTES.PRODUCTS.CATALOGUE}
-                        className="btn btn-cta"
+                        className="btn btn-dark dark:btn-light btn-cta"
                       >
                         {element.content[locale].text}
                       </Link>

@@ -33,6 +33,7 @@
   --color-info: #82b4f4;
 
   --color-white: #ffffff;
+  --color-gray-0: #ffffff;
   --color-gray-100: #f2f2f2;
   --color-gray-200: #d4d4d4;
   --color-gray-400: #939393;
@@ -40,7 +41,7 @@
   --color-gray-600: #333333;
   --color-gray-1000: #212121;
 
-  --color-background-1: #e2e2e2;
+  /* --color-background-1: #e2e2e2; */
 
   --font-noto-sans: var(--font-noto-sans);
   --font-noto-serif: var(--font-noto-serif);
@@ -72,7 +73,7 @@
     --color-warning: #d9c56f;
     --color-info: #5a9ee8;
 
-    --color-white: #121212;
+    --color-gray-0: #121212;
     --color-gray-100: #1e1e1e;
     --color-gray-200: #2c2c2c;
     --color-gray-400: #666666;
@@ -80,13 +81,13 @@
     --color-gray-600: #d1d1d1;
     --color-gray-1000: #f5f5f5;
 
-    --color-background-1: #121212;
+    /* --color-background-1: #121212; */
   }
 }
 
 @layer base {
   body {
-    @apply text-primary-1000 bg-background-1 font-noto-sans leading-normal text-base transition-colors duration-300 ease-in-out;
+    @apply text-primary-1000 bg-gray-100 font-noto-sans leading-normal text-base transition-colors duration-300 ease-in-out;
   }
   img {
     @apply block max-w-full h-auto;
@@ -176,7 +177,11 @@
 
 /* btn */
 @utility btn {
-  @apply cursor-pointer transition-colors text-gray-500 border-2 border-gray-500 bg-transparent rounded-full hover:text-white hover:bg-gray-600 focus:border-[3px] focus:border-gray-400 focus:text-gray-500 focus:bg-transparent disabled:text-gray-200 disabled:border-gray-200 disabled:cursor-not-allowed disabled:pointer-events-none;
+  @apply cursor-pointer transition-colors border-2 bg-transparent rounded-full disabled:cursor-not-allowed disabled:pointer-events-none;
+}
+
+@utility btn-light {
+  @apply text-gray-500  border-gray-500 hover:text-gray-0 hover:bg-gray-600 focus:border-[3px] focus:border-gray-400 focus:text-gray-500 focus:bg-transparent disabled:text-gray-200 disabled:border-gray-200;
 }
 @utility btn-dark {
   @apply text-gray-100  border-gray-100 rounded-full hover:text-gray-600 hover:bg-gray-100 focus:border-[3px] focus:border-gray-200 focus:text-gray-100 focus:bg-transparent disabled:text-gray-400 disabled:border-gray-400;

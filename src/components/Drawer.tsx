@@ -116,7 +116,7 @@ const DrawerContent: FC<DrawerContentProps> = ({
       inert={!isOpen}
       className={cn(
         style.position,
-        "z-50 bg-white transition transform flex flex-col p-2",
+        "z-50 bg-gray-0 transition transform flex flex-col p-2",
         isOpen ? style.open : style.closed,
         className,
       )}
