@@ -1,7 +1,8 @@
 import { type JSX, use } from "react";
 
-import { useTranslations } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
+
+import HomeBanner from "./_components/HomeBanner";
 
 export default function Home({
   params,
@@ -11,13 +12,9 @@ export default function Home({
   const { locale } = use(params);
   setRequestLocale(locale);
 
-  const t = useTranslations("home");
-
   return (
-    <main>
-      <div className="bg-primary-200">
-        <h1>{t("header")}</h1>
-      </div>
+    <main className="flex-1">
+      <HomeBanner />
     </main>
   );
 }

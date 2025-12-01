@@ -76,9 +76,11 @@ export default async function RootLayout({
       >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <NextIntlClientProvider locale={locale} messages={messages}>
-            <Navbar />
-            {children}
-            <Footer />
+            <div className="flex flex-col min-h-screen">
+              <Navbar />
+              {children}
+              <Footer />
+            </div>
             <Toaster position="top-center" />
           </NextIntlClientProvider>
         </ThemeProvider>

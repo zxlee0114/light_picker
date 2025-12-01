@@ -10,28 +10,26 @@ import MobileSideNavbar from "../sidebar/MobileNavbar";
 
 const Navbar = () => {
   return (
-    <>
-      <header>
-        <Wrapper className="flex-between gap-7 py-5">
-          <section>
-            <Logo className="w-35 h-10" />
-          </section>
-          <nav className="flex-1">
-            <div className="flex-between">
-              <HeaderMenu />
-              <HeaderButtonGroup />
-            </div>
-          </nav>
-          <div className="flex-center">
-            <AuthBtn />
-            <SettingsProvider>
-              <PreferenceSettingWrapper />
-            </SettingsProvider>
-            <MobileSideNavbar />
+    <header>
+      <Wrapper className="flex-between gap-7 py-5">
+        <section>
+          <Logo className="w-35 h-10" />
+        </section>
+        <nav className="flex-1">
+          <div className="flex-between">
+            <HeaderMenu />
+            <HeaderButtonGroup />
           </div>
-        </Wrapper>
-      </header>
-    </>
+        </nav>
+        <div className="flex-center">
+          <AuthBtn />
+          <SettingsProvider>
+            <PreferenceSettingWrapper />
+          </SettingsProvider>
+          <MobileSideNavbar />
+        </div>
+      </Wrapper>
+    </header>
   );
 };
 
