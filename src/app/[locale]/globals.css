@@ -125,26 +125,6 @@
   }
 }
 
-@layer utilities {
-  .banner-gradient {
-    position: relative;
-    isolation: isolate;
-  }
-
-  .banner-gradient::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-      270deg,
-      rgba(0, 0, 0, 0) 5.98%,
-      rgba(0, 0, 0, 0.2) 76.12%
-    );
-    pointer-events: none;
-    z-index: -1;
-  }
-}
-
 /* Typography */
 @utility h1-bold {
   @apply font-noto-serif text-[4rem] leading-[1.2] tracking-[0.16em] font-bold;
@@ -230,6 +210,36 @@
 @utility flex-start {
   @apply flex justify-start items-center;
 }
+
+@layer utilities {
+  .banner-gradient {
+    position: relative;
+    isolation: isolate;
+  }
+
+  /* Home Banner starts */
+  .banner-gradient::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      270deg,
+      rgba(0, 0, 0, 0) 5.98%,
+      rgba(0, 0, 0, 0.2) 76.12%
+    );
+    pointer-events: none;
+    z-index: -1;
+  }
+}
+.swiper-pagination-bullet {
+  @apply inline-block size-2 rounded-full
+   bg-gray-100 dark:bg-gray-300/90;
+}
+.swiper-pagination-bullet.swiper-pagination-bullet-active {
+  @apply w-6 bg-gray-200 dark:bg-gray-300 rounded-sm;
+}
+
+/* Home Banner ends */
 
 /* * 🚿 shadcn style ↓↓ */
 @theme inline {

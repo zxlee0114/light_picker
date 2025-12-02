@@ -24,12 +24,18 @@ type Locale =
 
 const HomeBanner = () => {
   const locale = useLocale() as Locale;
+
   return (
     <section className="bg-gray-0 pt-15 pb-25">
       <Swiper
         modules={[Pagination, Autoplay]}
         autoplay={{ delay: 5000 }}
-        pagination={{ clickable: true }}
+        pagination={{
+          el: "#Home_Banner_Carousel_Pagination",
+          renderBullet: (_index, className) =>
+            `<span class="${className}"></span>`,
+          clickable: true,
+        }}
       >
         {HOME_BANNER_DATA.map(banner => {
           const { id, class: backgroundImage, element } = banner;
@@ -80,6 +86,10 @@ const HomeBanner = () => {
             </SwiperSlide>
           );
         })}
+        <div
+          id="Home_Banner_Carousel_Pagination"
+          className="flex-center gap-2 sm:mt-12 mt-6"
+        />
       </Swiper>
     </section>
   );
