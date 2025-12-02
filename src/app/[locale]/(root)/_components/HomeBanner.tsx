@@ -26,7 +26,7 @@ const HomeBanner = () => {
   const locale = useLocale() as Locale;
 
   return (
-    <section className="bg-gray-0 pt-15 pb-25">
+    <section className="bg-gray-0 sm:pt-15 sm:pb-11 pt-0 pb-7">
       <Swiper
         modules={[Pagination, Autoplay]}
         autoplay={{ delay: 5000 }}
@@ -88,7 +88,7 @@ const HomeBanner = () => {
         })}
         <div
           id="Home_Banner_Carousel_Pagination"
-          className="flex-center gap-2 sm:mt-12 mt-6"
+          className="flex-center sm:mt-12 mt-6"
         />
       </Swiper>
     </section>

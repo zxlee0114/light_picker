@@ -232,7 +232,7 @@
   }
 }
 .swiper-pagination-bullet {
-  @apply inline-block size-2 rounded-full
+  @apply inline-block size-2 rounded-full mx-0
    bg-gray-100 dark:bg-gray-300/90;
 }
 .swiper-pagination-bullet.swiper-pagination-bullet-active {
