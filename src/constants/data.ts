@@ -40,7 +40,7 @@ export const BANNER_SEARCH_ELEMENT = {
     en: {
       title: "Explore Film",
       subtitle: "Discover Light and Shadow",
-      text: "Search for products…",
+      text: "Search…",
     },
   },
 } as const;
@@ -50,13 +50,13 @@ export const BANNER_BTN_ELEMENT = {
   content: {
     "zh-TW": {
       title: "你的珍藏",
-      subtitle: "能是別人的靈光",
+      subtitle: "別人的靈光",
       text: "瀏覽商品",
     },
     en: {
       title: "Your Collection",
       subtitle: "Someone's Inspiration",
-      text: "Browse Products",
+      text: "Browse",
     },
   },
 } as const;

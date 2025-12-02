@@ -8,7 +8,7 @@ const PreferenceSettingWrapper = () => {
   const { setOpen } = useSettings();
   return (
     <>
-      <button onClick={() => setOpen(true)}>
+      <button className="hidden sm:block" onClick={() => setOpen(true)}>
         <EllipsisVertical className="link" />
       </button>
       {/* <PreferenceSettingDialog open={isOpen} onOpenChange={setIsOpen} /> */}

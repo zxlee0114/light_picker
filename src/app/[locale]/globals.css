@@ -32,7 +32,6 @@
   --color-warning: #f5e6a8;
   --color-info: #82b4f4;
 
-  --color-white: #ffffff;
   --color-gray-0: #ffffff;
   --color-gray-100: #f2f2f2;
   --color-gray-200: #d4d4d4;
@@ -40,6 +39,11 @@
   --color-gray-500: #5b5b5b;
   --color-gray-600: #333333;
   --color-gray-1000: #212121;
+
+  /* not affected with dark mode switch */
+  --color-white: #ffffff;
+  --color-gray-light-100: #f2f2f2;
+  --color-gray-light-200: #d4d4d4;
 
   /* --color-background-1: #e2e2e2; */
 
@@ -179,7 +183,6 @@
 @utility btn {
   @apply cursor-pointer transition-colors border-2 bg-transparent rounded-full disabled:cursor-not-allowed disabled:pointer-events-none;
 }
-
 @utility btn-light {
   @apply text-gray-500  border-gray-500 hover:text-gray-0 hover:bg-gray-600 focus:border-[3px] focus:border-gray-400 focus:text-gray-500 focus:bg-transparent disabled:text-gray-200 disabled:border-gray-200;
 }
@@ -198,7 +201,6 @@
 @utility btn-small {
   @apply py-3 px-6 text-s-bold;
 }
-
 @utility btn-icon {
   --backdrop-default: rgba(242, 242, 242, 0.3);
   --backdrop-disabled: rgba(91, 91, 91, 0.3);

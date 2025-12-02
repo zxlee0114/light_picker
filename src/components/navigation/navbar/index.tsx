@@ -16,7 +16,7 @@ const Navbar = () => {
           <Logo className="w-35 h-10" />
         </section>
         <nav className="flex-1">
-          <div className="flex-between">
+          <div className="flex-between sm:flex hidden">
             <HeaderMenu />
             <HeaderButtonGroup />
           </div>
