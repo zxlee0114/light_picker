@@ -96,7 +96,7 @@ const HomeBanner = () => {
                   </h2>
                   <div
                     key={`action-${activeIndex}`}
-                    className="flex sm:justify-start justify-center w-full banner-text-animate-delay"
+                    className="flex sm:justify-start justify-center w-full"
                   >
                     {type === "button" ? (
                       <Link
@@ -104,14 +104,17 @@ const HomeBanner = () => {
                         href={ROUTES.PRODUCTS.CATALOGUE}
                         className={cn(
                           "inline-block btn btn-dark dark:btn-light dark:text-gray-light-100 dark:border-gray-light-100 text-center",
-                          "sm:btn-cta text-s-bold py-[9.5px] px-5 w-[min(260px,100%)]",
+                          "sm:btn-cta text-s-bold py-[9.5px] px-5 w-[min(260px,100%)] banner-text-animate-delay",
                         )}
                       >
                         {text}
                       </Link>
                     ) : (
                       // Search Bar
-                      <BannerSearchBar placeholder={text} />
+                      <BannerSearchBar
+                        placeholder={text}
+                        className="banner-text-animate-delay"
+                      />
                     )}
                   </div>
                 </div>

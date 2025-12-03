@@ -210,14 +210,12 @@
 @utility flex-start {
   @apply flex justify-start items-center;
 }
-
+/* Home Banner starts */
 @layer utilities {
   .banner-gradient {
     position: relative;
     isolation: isolate;
   }
-
-  /* Home Banner starts */
   .banner-gradient::before {
     content: "";
     position: absolute;
@@ -252,11 +250,12 @@
 
 @utility banner-text-animate {
   animation: fadeInUp 800ms ease-out forwards;
+  will-change: transform, opacity;
 }
-
 @utility banner-text-animate-delay {
   animation: fadeInUp 800ms ease-out 200ms forwards;
   opacity: 0;
+  will-change: transform, opacity;
 }
 
 /* Home Banner ends */
