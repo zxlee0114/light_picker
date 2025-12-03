@@ -1,8 +1,11 @@
 "use client";
 
+import { useRef, useState } from "react";
+
 import { useLocale } from "next-intl";
 import { Pagination, Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
+import type { Swiper as SwiperType } from "swiper/types";
 import "swiper/css";
 import "swiper/css/pagination";
 
@@ -24,17 +27,43 @@ type Locale =
 
 const HomeBanner = () => {
   const locale = useLocale() as Locale;
+  const swiperRef = useRef<SwiperType | null>(null);
+  const autoplayTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const handleInteraction = () => {
+    if (swiperRef.current?.autoplay) {
+      swiperRef.current.autoplay.stop();
+    }
+
+    if (autoplayTimeoutRef.current) {
+      clearTimeout(autoplayTimeoutRef.current);
+    }
+
+    autoplayTimeoutRef.current = setTimeout(() => {
+      swiperRef.current?.autoplay.start();
+    }, 5000);
+  };
 
   return (
     <section className="bg-gray-0 sm:pt-15 sm:pb-11 pt-0 pb-7">
       <Swiper
         modules={[Pagination, Autoplay]}
         autoplay={{ delay: 5000 }}
+        loop
         pagination={{
           el: "#Home_Banner_Carousel_Pagination",
+          clickable: true,
           renderBullet: (_index, className) =>
             `<span class="${className}"></span>`,
-          clickable: true,
+        }}
+        onSwiper={swiper => {
+          swiperRef.current = swiper;
+        }}
+        onTouchEnd={handleInteraction}
+        onSlideChange={swiper => {
+          setActiveIndex(swiper.activeIndex);
+          handleInteraction();
         }}
       >
         {HOME_BANNER_DATA.map(banner => {
@@ -53,8 +82,9 @@ const HomeBanner = () => {
               >
                 <div className="flex flex-col sm:items-start items-center sm:gap-10 gap-7">
                   <h2
+                    key={`title-${activeIndex}`}
                     className={cn(
-                      "flex flex-col gap-1 text-white text-balance",
+                      "flex flex-col gap-1 text-white text-balance banner-text-animate",
                       "sm:items-start items-center",
                       "sm:text-start text-center",
                       "sm:h1-bold h3-bold",
@@ -64,7 +94,10 @@ const HomeBanner = () => {
                     <span className="inline-block">{title}</span>
                     <span className="inline-block">{subtitle}</span>
                   </h2>
-                  <div className="flex sm:justify-start justify-center w-full">
+                  <div
+                    key={`action-${activeIndex}`}
+                    className="flex sm:justify-start justify-center w-full banner-text-animate-delay"
+                  >
                     {type === "button" ? (
                       <Link
                         role="button"

@@ -239,6 +239,26 @@
   @apply w-6 bg-gray-200 dark:bg-gray-300 rounded-sm;
 }
 
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@utility banner-text-animate {
+  animation: fadeInUp 800ms ease-out forwards;
+}
+
+@utility banner-text-animate-delay {
+  animation: fadeInUp 800ms ease-out 200ms forwards;
+  opacity: 0;
+}
+
 /* Home Banner ends */
 
 /* * 🚿 shadcn style ↓↓ */
