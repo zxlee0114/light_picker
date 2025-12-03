@@ -52,14 +52,14 @@
 
   --background-image-logo-light: url("/images/logo-light.svg");
   --background-image-logo-dark: url("/images/logo-dark.svg");
-  --background-image-home-banner1-lg: url("/images/home-banner/banner-1-lg.png");
-  --background-image-home-banner1-sm: url("/images/home-banner/banner-1-sm.png");
-  --background-image-home-banner2-lg: url("/images/home-banner/banner-2-lg.png");
-  --background-image-home-banner2-sm: url("/images/home-banner/banner-2-sm.png");
-  --background-image-home-banner3-lg: url("/images/home-banner/banner-3-lg.png");
-  --background-image-home-banner3-sm: url("/images/home-banner/banner-3-sm.png");
-  --background-image-home-banner4-lg: url("/images/home-banner/banner-4-lg.png");
-  --background-image-home-banner4-sm: url("/images/home-banner/banner-4-sm.png");
+  --background-image-home-banner1-lg: url("/images/home/banner/banner-1-lg.png");
+  --background-image-home-banner1-sm: url("/images/home/banner/banner-1-sm.png");
+  --background-image-home-banner2-lg: url("/images/home/banner/banner-2-lg.png");
+  --background-image-home-banner2-sm: url("/images/home/banner/banner-2-sm.png");
+  --background-image-home-banner3-lg: url("/images/home/banner/banner-3-lg.png");
+  --background-image-home-banner3-sm: url("/images/home/banner/banner-3-sm.png");
+  --background-image-home-banner4-lg: url("/images/home/banner/banner-4-lg.png");
+  --background-image-home-banner4-sm: url("/images/home/banner/banner-4-sm.png");
 }
 
 /* Dark-mode style */
