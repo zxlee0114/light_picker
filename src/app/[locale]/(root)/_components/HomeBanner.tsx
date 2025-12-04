@@ -32,8 +32,11 @@ const HomeBanner = () => {
   const [activeIndex, setActiveIndex] = useState(0);
 
   const handleInteraction = () => {
-    if (swiperRef.current?.autoplay) {
-      swiperRef.current.autoplay.stop();
+    const swiper = swiperRef.current;
+    if (!swiper) return;
+
+    if (swiper.autoplay) {
+      swiper.autoplay.stop();
     }
 
     if (autoplayTimeoutRef.current) {
@@ -41,7 +44,15 @@ const HomeBanner = () => {
     }
 
     autoplayTimeoutRef.current = setTimeout(() => {
-      swiperRef.current?.autoplay.start();
+      const current = swiperRef.current;
+
+      // During timeout, swiper instance can be destroyed
+      if (!current) return;
+      if (current.destroyed) return;
+      if (!current.autoplay) return;
+      if (typeof current.autoplay.start !== "function") return;
+
+      current.autoplay.start();
     }, 5000);
   };
 
