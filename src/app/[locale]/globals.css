@@ -210,6 +210,9 @@
 @utility flex-start {
   @apply flex justify-start items-center;
 }
+@utility flex-end {
+  @apply flex justify-end items-center;
+}
 /* Home Banner starts */
 @layer utilities {
   .banner-gradient {
