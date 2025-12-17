@@ -86,7 +86,7 @@ const HomeBanner = () => {
             <SwiperSlide key={id}>
               <Wrapper
                 className={cn(
-                  "sm:h-110 h-56 w-full sm:py-22.5 py-10 sm:px-20 px-[57.5px] sm:rounded-sm banner-gradient bg-no-repeat bg-cover bg-center",
+                  "sm:h-110 h-56 sm:py-22.5 py-10 sm:px-20 px-[57.5px] sm:rounded-sm banner-gradient bg-no-repeat bg-cover bg-center",
                   backgroundImage.sm,
                   backgroundImage.lg,
                 )}

@@ -157,6 +157,16 @@
   @apply text-xs tracking-[0.12em] font-bold;
 }
 
+@utility h3-bold-fluid {
+  @apply h3-bold;
+  font-size: clamp(1.25rem, 2.1cqi + 0.25rem, 1.75rem);
+}
+
+@utility h2-bold-fluid {
+  @apply h3-bold;
+  font-size: clamp(1.75rem, 2.45cqi + 0.25rem, 2rem);
+}
+
 /* ----------- */
 
 /* btn */
@@ -213,7 +223,8 @@
 @utility flex-end {
   @apply flex justify-end items-center;
 }
-/* Home Banner starts */
+
+/* Homepage starts */
 @layer utilities {
   .banner-gradient {
     position: relative;
@@ -230,6 +241,28 @@
     );
     pointer-events: none;
     z-index: -1;
+  }
+
+  .seafoam-overlay {
+    position: relative;
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-color: rgba(139, 176, 183, 0.2);
+      z-index: 1;
+      pointer-events: none;
+      border-radius: inherit;
+    }
+  }
+
+  .heading-deco-dash {
+    position: relative;
+    display: inline-block;
+    &::after {
+      content: "";
+      @apply absolute start-full inset-y-1/2 -translate-y-1/2 ms-3 w-30 h-px bg-gray-400;
+    }
   }
 }
 .swiper-pagination-bullet {
@@ -261,7 +294,7 @@
   will-change: transform, opacity;
 }
 
-/* Home Banner ends */
+/* Homepage ends */
 
 /* * 🚿 shadcn style ↓↓ */
 @theme inline {
