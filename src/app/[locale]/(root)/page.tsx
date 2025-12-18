@@ -3,6 +3,8 @@ import { type JSX, use } from "react";
 import { setRequestLocale } from "next-intl/server";
 
 import HomeBanner from "./_components/HomeBanner";
+import HomeCta from "./_components/HomeCta";
+import HomeFeatures from "./_components/HomeFeatures";
 
 export default function Home({
   params,
@@ -15,6 +17,8 @@ export default function Home({
   return (
     <main className="flex-1">
       <HomeBanner />
+      <HomeFeatures />
+      <HomeCta />
     </main>
   );
 }

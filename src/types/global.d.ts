@@ -1,5 +1,9 @@
 import type { ReactNode } from "react";
 
+export type Prettify<T> = {
+  [K in keyof T]: T[K];
+} & {};
+
 export type Locales = "zh-TW" | "en";
 
 type ParamsKeys = "locale" | "id";

@@ -32,8 +32,11 @@ const HomeBanner = () => {
   const [activeIndex, setActiveIndex] = useState(0);
 
   const handleInteraction = () => {
-    if (swiperRef.current?.autoplay) {
-      swiperRef.current.autoplay.stop();
+    const swiper = swiperRef.current;
+    if (!swiper) return;
+
+    if (swiper.autoplay) {
+      swiper.autoplay.stop();
     }
 
     if (autoplayTimeoutRef.current) {
@@ -41,7 +44,15 @@ const HomeBanner = () => {
     }
 
     autoplayTimeoutRef.current = setTimeout(() => {
-      swiperRef.current?.autoplay.start();
+      const current = swiperRef.current;
+
+      // During timeout, swiper instance can be destroyed
+      if (!current) return;
+      if (current.destroyed) return;
+      if (!current.autoplay) return;
+      if (typeof current.autoplay.start !== "function") return;
+
+      current.autoplay.start();
     }, 5000);
   };
 
@@ -75,7 +86,7 @@ const HomeBanner = () => {
             <SwiperSlide key={id}>
               <Wrapper
                 className={cn(
-                  "sm:h-110 h-56 w-full sm:py-22.5 py-10 sm:px-20 px-[57.5px] sm:rounded-sm banner-gradient bg-no-repeat bg-cover bg-center",
+                  "sm:h-110 h-56 sm:py-22.5 py-10 sm:px-20 px-[57.5px] sm:rounded-sm banner-gradient bg-no-repeat bg-cover bg-center",
                   backgroundImage.sm,
                   backgroundImage.lg,
                 )}
@@ -96,7 +107,7 @@ const HomeBanner = () => {
                   </h2>
                   <div
                     key={`action-${activeIndex}`}
-                    className="flex sm:justify-start justify-center w-full banner-text-animate-delay"
+                    className="flex sm:justify-start justify-center w-full"
                   >
                     {type === "button" ? (
                       <Link
@@ -104,14 +115,17 @@ const HomeBanner = () => {
                         href={ROUTES.PRODUCTS.CATALOGUE}
                         className={cn(
                           "inline-block btn btn-dark dark:btn-light dark:text-gray-light-100 dark:border-gray-light-100 text-center",
-                          "sm:btn-cta text-s-bold py-[9.5px] px-5 w-[min(260px,100%)]",
+                          "sm:btn-cta text-s-bold py-[9.5px] px-5 w-[min(260px,100%)] banner-text-animate-delay",
                         )}
                       >
                         {text}
                       </Link>
                     ) : (
                       // Search Bar
-                      <BannerSearchBar placeholder={text} />
+                      <BannerSearchBar
+                        placeholder={text}
+                        className="banner-text-animate-delay"
+                      />
                     )}
                   </div>
                 </div>

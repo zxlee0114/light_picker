@@ -16,7 +16,13 @@ export const Wrapper = <T extends ElementType = "div">({
 }: WrapperProps<T>) => {
   const Component = as ?? "div";
   return (
-    <Component className={cn("max-w-7xl mx-auto px-4", className)} {...props}>
+    <Component
+      className={cn(
+        "w-[min(1296px,100%)] mx-auto px-[clamp(1rem,4vw,2rem)]",
+        className,
+      )}
+      {...props}
+    >
       {children}
     </Component>
   );
