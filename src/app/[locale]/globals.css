@@ -60,6 +60,10 @@
   --background-image-home-banner3-sm: url("/images/home/banner/banner-3-sm.png");
   --background-image-home-banner4-lg: url("/images/home/banner/banner-4-lg.png");
   --background-image-home-banner4-sm: url("/images/home/banner/banner-4-sm.png");
+  --background-image-home-cta-lg: url("/images/home/cta/cta-lg.png");
+  --background-image-home-cta-sm: url("/images/home/cta/cta-sm.png");
+
+  --breakpoint-xs: 23.5rem;
 }
 
 /* Dark-mode style */
@@ -245,6 +249,7 @@
 
   .seafoam-overlay {
     position: relative;
+    isolation: isolate;
     &::before {
       content: "";
       position: absolute;

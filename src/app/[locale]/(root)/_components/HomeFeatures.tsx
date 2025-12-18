@@ -34,7 +34,7 @@ const HomeFeatures = () => {
               {/* img section */}
               <div
                 className={cn(
-                  "2xl:w-[56.614583%] max-2xl:grow max-sm:w-full overflow-hidden seafoam-overlay rounded-md",
+                  "2xl:w-[56.614583%] max-2xl:grow max-sm:w-full overflow-hidden seafoam-overlay rounded-md shadow-xl",
                   even ? "2xl:rounded-s-none" : "2xl:rounded-e-none",
                 )}
               >
