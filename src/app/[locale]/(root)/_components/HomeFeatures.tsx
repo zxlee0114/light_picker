@@ -12,7 +12,7 @@ const HomeFeatures = () => {
   const t = useTranslations("home");
 
   return (
-    <section className="@container/home-features bg-gray-0 sm:py-30 py-15 grid sm:gap-20 gap-5">
+    <section className="@container/home-features bg-gray-0 sm:py-30 py-15 grid sm:gap-10 gap-5">
       <Wrapper className="2xl:px-0 sm:px-6 px-3">
         <h2 className="h2-bold-fluid heading-deco-dash">{t("whyUs")}</h2>
       </Wrapper>
