@@ -142,6 +142,11 @@
 @utility h4-bold {
   @apply font-noto-serif text-2xl leading-[1.2] tracking-[0.12em] font-bold;
 }
+
+@utility h5-bold {
+  @apply font-noto-serif text-xl tracking-widest font-bold;
+}
+
 @utility h5-regular {
   @apply text-xl tracking-widest;
 }
