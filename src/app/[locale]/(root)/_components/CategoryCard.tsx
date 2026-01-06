@@ -17,7 +17,7 @@ const CategoryCard = ({ title, image, path }: CategoryCardProps) => {
         height={160}
         className="max-sm:h-25 max-sm:w-25"
       />
-      <h3 className="sm:h3-bold h5-bold">{title}</h3>
+      <h3 className="h5-bold sm:h3-bold">{title}</h3>
       <Link
         href={path}
         className="block btn sm:btn-medium btn-small btn-light w-fit"
