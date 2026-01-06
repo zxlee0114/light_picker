@@ -9,7 +9,7 @@ type CategoryCardProps = {
 
 const CategoryCard = ({ title, image, path }: CategoryCardProps) => {
   return (
-    <div className="sm:py-7 py-5 sm:px-7 px-6 grid sm:gap-7 gap-3 place-items-center border-2 border-gray-200 rounded-xl">
+    <div className="sm:py-7 py-5 sm:px-7 px-6 grid sm:gap-7 gap-3 place-items-center border-2 border-gray-200 rounded-xl hover:bg-gray-200 ease-in duration-300 transition-colors">
       <Image
         src={image}
         alt={title}
