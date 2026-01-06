@@ -1,7 +1,10 @@
 import type { SvgIconId } from "@/components/Icon";
 
+import { ROUTES } from "./routes";
+
 const PIC_PATH_TO_HOME = "/images/home";
 const FEATURE_PICS = `${PIC_PATH_TO_HOME}/feature`;
+const CATEGORY_PICS = `${PIC_PATH_TO_HOME}/category`;
 const LINK_PLACEHOLDER = "https://github.com/zxlee0114/light_picker" as const;
 
 export type SocialIcons = Extract<SvgIconId, "facebook" | "instagram" | "line">;
@@ -97,6 +100,53 @@ export const HOME_BANNER_DATA = [
     element: BANNER_BTN_ELEMENT,
   },
 ] as const;
+
+export const PRODUCT_CATEGORIES = {
+  "zh-TW": [
+    {
+      title: "相機",
+      image: `${CATEGORY_PICS}/category-1.png`,
+      path: `${ROUTES.PRODUCTS.CATEGORY("camera")}`,
+    },
+    {
+      title: "機身",
+      image: `${CATEGORY_PICS}/category-2.png`,
+      path: `${ROUTES.PRODUCTS.CATEGORY("camera-body")}`,
+    },
+    {
+      title: "鏡頭",
+      image: `${CATEGORY_PICS}/category-3.png`,
+      path: `${ROUTES.PRODUCTS.CATEGORY("lens")}`,
+    },
+    {
+      title: "配件",
+      image: `${CATEGORY_PICS}/category-4.png`,
+      path: `${ROUTES.PRODUCTS.CATEGORY("accessories")}`,
+    },
+  ],
+  en: [
+    {
+      title: "Camera",
+      image: `${CATEGORY_PICS}/category-1.png`,
+      path: `${ROUTES.PRODUCTS.CATEGORY("camera")}`,
+    },
+    {
+      title: "Camera Body",
+      image: `${CATEGORY_PICS}/category-2.png`,
+      path: `${ROUTES.PRODUCTS.CATEGORY("camera-body")}`,
+    },
+    {
+      title: "Lens",
+      image: `${CATEGORY_PICS}/category-3.png`,
+      path: `${ROUTES.PRODUCTS.CATEGORY("lens")}`,
+    },
+    {
+      title: "Accessories",
+      image: `${CATEGORY_PICS}/category-4.png`,
+      path: `${ROUTES.PRODUCTS.CATEGORY("accessories")}`,
+    },
+  ],
+};
 
 export const WHY_US_REASONS = {
   "zh-TW": [
