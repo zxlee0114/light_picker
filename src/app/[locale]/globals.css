@@ -142,6 +142,11 @@
 @utility h4-bold {
   @apply font-noto-serif text-2xl leading-[1.2] tracking-[0.12em] font-bold;
 }
+
+@utility h5-bold {
+  @apply font-noto-serif text-xl tracking-widest font-bold;
+}
+
 @utility h5-regular {
   @apply text-xl tracking-widest;
 }
@@ -178,10 +183,10 @@
   @apply cursor-pointer transition-colors border-2 bg-transparent rounded-full disabled:cursor-not-allowed disabled:pointer-events-none;
 }
 @utility btn-light {
-  @apply text-gray-500  border-gray-500 hover:text-gray-0 hover:bg-gray-600 focus:border-[3px] focus:border-gray-400 focus:text-gray-500 focus:bg-transparent disabled:text-gray-200 disabled:border-gray-200;
+  @apply text-gray-500  border-gray-500 hover:text-gray-0 hover:bg-gray-600 focus:border-[3px] focus:border-gray-400 focus:text-gray-500 focus:bg-transparent disabled:text-gray-200 disabled:border-gray-200 ease-in duration-300 transition-colors;
 }
 @utility btn-dark {
-  @apply text-gray-100  border-gray-100 rounded-full hover:text-gray-600 hover:bg-gray-100 focus:border-[3px] focus:border-gray-200 focus:text-gray-100 focus:bg-transparent disabled:text-gray-400 disabled:border-gray-400;
+  @apply text-gray-100  border-gray-100 rounded-full hover:text-gray-600 hover:bg-gray-100 focus:border-[3px] focus:border-gray-200 focus:text-gray-100 focus:bg-transparent disabled:text-gray-400 disabled:border-gray-400 ease-in duration-300 transition-colors;
 }
 @utility btn-cta {
   @apply py-4 px-17 text-l-bold;
